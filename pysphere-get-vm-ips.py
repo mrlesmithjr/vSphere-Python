@@ -37,6 +37,7 @@ parser.add_argument('-n', '--name', nargs=1, required=False, help='VM Name', des
 parser.add_argument('-s', '--server', nargs=1, required=True, help='The vCenter or ESXi server to connect to', dest='server', type=str)
 parser.add_argument('-u', '--user', nargs=1, required=True, help='The username with which to connect to the server', dest='username', type=str)
 parser.add_argument('-v', '--verbose', required=False, help='Enable verbose output', dest='verbose', action='store_true')
+parser.add_argument('-p', '--password', nargs=1, required=True, help='The password with which to connect to the server', dest='password', type=str)
 
 args = parser.parse_args()
 
@@ -48,9 +49,10 @@ if args.vmname:
 server      = args.server[0]
 username    = args.username[0]
 verbose     = args.verbose
+password    = args.password[0]
 
 # Asking Users password for server
-password=getpass.getpass(prompt='Enter password for vCenter %s for user %s: ' % (server,username))
+#password=getpass.getpass(prompt='Enter password for vCenter %s for user %s: ' % (server,username))
 
 # Connecting to server
 print_verbose('Connecting to server %s with username %s' % (server,username))
